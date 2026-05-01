@@ -3,7 +3,7 @@ name: Sync Dropbox Photos
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"   # every 6 hours
+    - cron: "0 */6 * * *"
 
 jobs:
   sync:
@@ -34,5 +34,6 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add images/
-          git commit -m "Auto-sync Dropbox photos" || true
+          git add images_index.txt
+          git commit -m "Auto-sync Dropbox photos + update index" || true
           git push
